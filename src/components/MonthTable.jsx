@@ -27,7 +27,7 @@ for (const i in parsedJson) {
     }
 }
 
-// console.log(result[1]['values'])
+console.log(result)
 
 
  //// OBJ DATE JS ////
@@ -76,26 +76,28 @@ const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
 //   }
 
 
+
+
   
 class MonthTable extends Component {
     render() {
         return (
             <div className="App">
         <h1>Tableau des résultats mensuels</h1>
-            <div class="scroll-table">
+            <div className="scroll-table">
                 <table className="monthtable">
                 <tbody className="tbodymonth">
                 <tr>
                 <th>Item</th>
                          {listDate}
                     </tr>
-                        {Data.map((DataDetail, index) => {
+                        {result.map((DataDetail, index) => {
                             return (
                                 <tr>
-                                    <td>{DataDetail.item}</td>
-                                    {DataDetail.dates.map((DataDate, index) => {
+                                    <td>{DataDetail.product}</td>
+                                    {DataDetail.values.map((DataDate, index) => {
                                             return (
-                                                <td>{DataDate.qty}</td>
+                                                <td>{DataDate.nb}</td>
                                             )
                                         })}
                                 </tr>
@@ -110,5 +112,16 @@ class MonthTable extends Component {
 
 export default MonthTable;
 
+
+// {result.map((DataDetail, index) => {
+//     return (
+//         <tr>
+//             <td>{DataDetail.item}</td>
+//             {DataDetail.dates.map((DataDate, index) => {
+//                     return (
+//                         <td>{DataDate.qty}</td>
+//                     )
+//                 })}
+  
 
 
