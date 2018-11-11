@@ -40,8 +40,13 @@ function trimestre(m1, m2, m3) {
     }
     return trimestre
 }
-
-console.log(trimestre(2,3,4))
+var mesDates = []
+for (var u = 0; u < 25; u++) {
+    mesDates[u] = result[1]['values'][u]['DateToDisplay'];
+}
+const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
+console.log(mesDates)
+  
 
 
 var TrimestreDeux = []
@@ -80,6 +85,32 @@ for (var n = 0; n < result.length; n++) {
 }
 
 
+console.log(trimestre(2,3,4))
+
+
+// console.log(DisplayDateDeux);
+
+// function trimestre (1,2,3) {
+//     return (
+//       <ul>
+//         {elements.map((value, index) => {
+//           return <li key={index}>{value}</li>
+//         })}
+//       </ul>
+//     )
+//   }
+
+// var trimeDEi = []
+// for (var u = 0; u < 25; u++) {
+//     mesDates[u] = result[1]['values'][u]['DateToDisplay'];
+// }
+// const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
+
+// var troudeux = [trimestre (1,2,3)];
+// console.log(troudeux)
+// const trd = troudeux.map((tr) => {tr} )
+
+
 
 
 const TrimUn = TrimestreUn.map((n) => <td>{n}</td>);
@@ -102,6 +133,8 @@ class ReactTable extends Component {
                 <table>
                 <tbody>
                     <tr>
+              
+
                         <th>Item</th>
                         <th>Q1/2016</th>
                         <th>Q2/2016</th>
@@ -148,16 +181,4 @@ class ReactTable extends Component {
 export default ReactTable;
 
 
-// console.log(DisplayDateDeux);
-
-// function re () {
-//     const elements = ['one', 'two', 'three'];
-//     return (
-//       <ul>
-//         {elements.map((value, index) => {
-//           return <li key={index}>{value}</li>
-//         })}
-//       </ul>
-//     )
-//   }
 

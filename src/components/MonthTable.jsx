@@ -33,9 +33,10 @@ for (const i in parsedJson) {
 
  //// OBJ DATE JS ////
 var DisplayDates = []
-for (var t = 0; t < 24; t++) {
+for (var t = 0; t < 25; t++) {
     DisplayDates[t] = (result[0]['values'][t]['Date']);
 }
+console.log(DisplayDates)
 //////////////////////////
 
 
@@ -55,16 +56,17 @@ for (var t = 0; t < 24; t++) {
 
 
 var mesDates = []
-for (var u = 0; u < 24; u++) {
+for (var u = 0; u < 25; u++) {
     mesDates[u] = result[1]['values'][u]['DateToDisplay'];
 }
 const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
 
-  
+
 class MonthTable extends Component {
     render() {
         return (
             <div className="App">
+            <button className="toggle">Résultats Trimestriels</button>
         <h1>Tableau des résultats mensuels</h1>
             <div className="scroll-table">
                 <table className="monthtable">

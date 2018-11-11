@@ -12,12 +12,11 @@ for (const i in parsedJson) {
         const dateFormatted = `${date[1]}/${date[0]}`; // String sous la forme "03/16"
         const DateToCorrect = (moment(dateFormatted, "MM/YYYY").toDate()); // Convcersion en obje date de ma date 
         const Date = moment(moment(DateToCorrect).add(1, "M")).toDate(); // fix car janvier = 0 donc j'ajoute 1 mois sinon j'ai un décalage entre mon obj date et la date formaté
-
         let value = parsedJson[i][x]
         if (typeof(value) == 'string') { // Dans le JSON les nombres > 1000 sont considéré comme des string et si j'applique un parse int vu que le nombre est sous la fomr "1 234" j'obtiens 1. Donc si le type est une string alors j'enlève l'espace avec le REGEX et je parseInt le résultat
             value = value.replace(/\s/g, '') 
         }
-        values.push({
+         values.push({
           Date: Date, 
           DateToDisplay: dateFormatted, 
           nb: parseInt(value)}); // parse int dont j'ai parler au dessus
@@ -26,6 +25,8 @@ for (const i in parsedJson) {
         'product': parsedJson[i].item,
         'values': values
     }
+   let deleteItemInArray = (result[i]['values']).shift(); // J'ai une faute dans mes objets car il n'arrive pas à faire uen date avec les items logique donc je supprime tous les premiers résultats => item
+
 }
 
 var TrimestreUn = []
@@ -90,6 +91,19 @@ const TrimSept = TrimestreSept.map((TrimSept) => <td>{TrimSept}</td>);
 const TrimHuit = TrimestreHuit.map((TrimHuit) => <td>{TrimHuit}</td>);
 const TrimNeuf = TrimestreNeuf.map((TrimNeuf) => <td>{TrimNeuf}</td>);
 trimestre(2,3,4) 
+
+
+var mesTrimestres = []
+for (var u = 0; u < 25; u++) {
+    mesTrimestres[u] = result[1]['values'][u]['Trim'];
+    moment(mesTrimestres[u].format("Q/YYYY"))
+}
+
+
+const listTrim = mesTrimestres.map((TrimToDisplay) => <th>{TrimoDisplay}</th>);
+console.log(listTrim)
+
+
 class TrimestreTable extends Component {
     render() {
         
@@ -97,8 +111,12 @@ class TrimestreTable extends Component {
             <div className="App">
                 <h1>Tableau des résultats trimestriels</h1>
                 <table>
-                <tbody>
-                    <tr>
+                <tbody>  
+                          <tr>
+                <th>Item</th>
+                         {listTrim}
+                    </tr>
+                    {/* <tr>
                         <th>Item</th>
                         <th>Q1/2016</th>
                         <th>Q2/2016</th>
@@ -110,7 +128,7 @@ class TrimestreTable extends Component {
                         <th>Q4/2017</th>
                         <th>Q1/2018</th>
                         <th>Q2/2018</th>
-                    </tr>
+                    </tr> */}
                     </tbody>
 
                     {Data.map((DataDetail, n) => {
@@ -143,3 +161,48 @@ class TrimestreTable extends Component {
 }
 
 export default TrimestreTable;
+
+
+
+
+// var mesDates = []
+// for (var u = 0; u < 25; u++) {
+//     mesDates[u] = result[1]['values'][u]['DateToDisplay'];
+// }
+// const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
+
+
+// class MonthTable extends Component {
+//     render() {
+//         return (
+//             <div className="App">
+//             <button className="toggle">Résultats Trimestriels</button>
+//         <h1>Tableau des résultats mensuels</h1>
+//             <div className="scroll-table">
+//                 <table className="monthtable">
+//                 <tbody className="tbodymonth">
+//                 <tr>
+//                 <th>Item</th>
+//                          {listDate}
+//                     </tr>
+//                         {result.map((DataDetail, index) => {
+//                             return (
+//                                 <tr>
+//                                     <td>{DataDetail.product}</td>
+//                                     {DataDetail.values.map((DataDate, index) => {
+//                                             return (
+//                                                 <td>{DataDate.nb}</td>
+//                                             )
+//                                         })}
+//                                 </tr>
+//                             )
+//                         })}
+//                     </tbody>
+//                 </table> 
+//             </div>   
+//             </div>
+//         ) 
+// }}
+
+// export default MonthTable;
+
