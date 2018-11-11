@@ -1,0 +1,91 @@
+body {
+  text-align: center;
+  color: black;
+  text-align: center;
+  font-size: 1rem;
+  background-color: grey;
+  padding: 20px;
+  margin: 0;
+  width: 100vw;
+}
+
+
+  
+  #navbar li {
+    display: inline-block;
+  }
+  
+  #navbar li a {
+    color: rgb(13, 26, 38);
+    font-size: 0.7em;
+    height: 50px;
+    letter-spacing: 1px;
+    margin: 0 20px;
+    padding: 0 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin-left: auto;
+    margin-right: auto
+  }
+  
+  #navbar li a:hover {
+    color: rgb(28, 121, 184);
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+  }
+  
+table
+{
+  border: 2px solid black; 
+  border-collapse: collapse; 
+  margin: auto;
+}
+
+tr:nth-child(even) {background-color: #CCC}
+tr:nth-child(odd) {background-color: #FFF}
+
+td 
+{
+    width: 5vw;
+    height: 5vh;
+    border: 1px solid black; 
+    color: black;
+}
+
+th {
+  border: 1px solid black; 
+  text-align: center;
+  color: black;
+  text-align: center;
+  width: 5vw;
+  font-size: 1rem
+}
+
+tr:hover {
+  background-color: grey;
+}
+
+.scroll-table {
+  width: 95vw;
+  height: 95vh;
+}
+
+
+
+.monthtable {
+  width: 100%;
+  height: 100%;
+  display: block;
+  table-layout: fixed;
+  border-collapse: collapse;
+  position: relative;
+  margin-bottom: 68px;
+}
+
+.tbodymonth {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+}
