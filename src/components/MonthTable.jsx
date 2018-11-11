@@ -16,7 +16,7 @@ for (const i in parsedJson) {
         if (typeof(value) == 'string') { // Dans le JSON les nombres > 1000 sont considéré comme des string et si j'applique un parse int vu que le nombre est sous la fomr "1 234" j'obtiens 1. Donc si le type est une string alors j'enlève l'espace avec le REGEX et je parseInt le résultat
             value = value.replace(/\s/g, '') 
         }
-        values.push({
+         values.push({
           Date: Date, 
           DateToDisplay: dateFormatted, 
           nb: parseInt(value)}); // parse int dont j'ai parler au dessus
@@ -25,58 +25,40 @@ for (const i in parsedJson) {
         'product': parsedJson[i].item,
         'values': values
     }
+   let deleteItemInArray = (result[i]['values']).shift(); // J'ai une faute dans mes objets car il n'arrive pas à faire uen date avec les items logique donc je supprime tous les premiers résultats => item
+
 }
 
-console.log(result)
 
 
  //// OBJ DATE JS ////
 var DisplayDates = []
-for (var t = 1; t < 25; t++) {
+for (var t = 0; t < 24; t++) {
     DisplayDates[t] = (result[0]['values'][t]['Date']);
 }
-// console.log((DisplayDates))  
-
 //////////////////////////
 
 
-Data.forEach(element => {
-    element.dates = [];
-    for (const key in element) {
-        if (key !== 'item' && key !== "dates") {
-            var uneDate = []
-            uneDate.date = [key];
-            uneDate.qty = element[key]; // = nb de vente
-            element.dates.push(uneDate);
+// Data.forEach(element => {
+//     element.dates = [];
+//     for (const key in element) {
+//         if (key !== 'item' && key !== "dates") {
+//             var uneDate = []
+//             uneDate.date = [key];
+//             uneDate.qty = element[key]; // = nb de vente
+//             element.dates.push(uneDate);
           //  console.log(uneDate.date)
-        }
-    }
-});
+//         }
+//     }
+// });
+// Premiere methode utilisée
 
 
 var mesDates = []
-for (var u = 1; u < 25; u++) {
+for (var u = 0; u < 24; u++) {
     mesDates[u] = result[1]['values'][u]['DateToDisplay'];
 }
-console.log(mesDates);
-
 const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
-
-// console.log(DisplayDateDeux);
-
-// function re () {
-//     const elements = ['one', 'two', 'three'];
-//     return (
-//       <ul>
-//         {elements.map((value, index) => {
-//           return <li key={index}>{value}</li>
-//         })}
-//       </ul>
-//     )
-//   }
-
-
-
 
   
 class MonthTable extends Component {
@@ -111,17 +93,4 @@ class MonthTable extends Component {
 }}
 
 export default MonthTable;
-
-
-// {result.map((DataDetail, index) => {
-//     return (
-//         <tr>
-//             <td>{DataDetail.item}</td>
-//             {DataDetail.dates.map((DataDate, index) => {
-//                     return (
-//                         <td>{DataDate.qty}</td>
-//                     )
-//                 })}
-  
-
 

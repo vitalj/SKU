@@ -146,3 +146,18 @@ class ReactTable extends Component {
 }
 
 export default ReactTable;
+
+
+// console.log(DisplayDateDeux);
+
+// function re () {
+//     const elements = ['one', 'two', 'three'];
+//     return (
+//       <ul>
+//         {elements.map((value, index) => {
+//           return <li key={index}>{value}</li>
+//         })}
+//       </ul>
+//     )
+//   }
+
