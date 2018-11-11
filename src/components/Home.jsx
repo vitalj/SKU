@@ -6,7 +6,7 @@ class Home extends Component {
         return (
 <main>
 <div className="text">
-    <p >Exercice réalisé par Jérémy VITAL pour SKU Science</p>
+    <p>Exercice réalisé par Jérémy VITAL pour SKU Science</p>
   </div>
 </main>
         

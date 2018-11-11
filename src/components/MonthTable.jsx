@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Data from '../data/data.json'
+import TrimestreTable from './TrimestreTable.jsx';
 var myJSON = JSON.stringify(Data);
 var moment = require('moment');
 
@@ -29,56 +30,43 @@ for (const i in parsedJson) {
 
 }
 
-
-
  //// OBJ DATE JS ////
 var DisplayDates = []
 for (var t = 0; t < 25; t++) {
     DisplayDates[t] = (result[0]['values'][t]['Date']);
 }
-console.log(DisplayDates)
 //////////////////////////
 
 
-// Data.forEach(element => {
-//     element.dates = [];
-//     for (const key in element) {
-//         if (key !== 'item' && key !== "dates") {
-//             var uneDate = []
-//             uneDate.date = [key];
-//             uneDate.qty = element[key]; // = nb de vente
-//             element.dates.push(uneDate);
-          //  console.log(uneDate.date)
-//         }
-//     }
-// });
-// Premiere methode utilisée
-
-
-var mesDates = []
+let myMonth = []
 for (var u = 0; u < 25; u++) {
-    mesDates[u] = result[1]['values'][u]['DateToDisplay'];
+    myMonth[u] = result[1]['values'][u]['DateToDisplay'];
 }
-const listDate = mesDates.map((DateToDisplay) => <th>{DateToDisplay}</th>);
+
+const listMonth = myMonth.map((MonthToDisplay) => <th>{MonthToDisplay}</th>);
 
 
 class MonthTable extends Component {
     render() {
         return (
             <div className="App">
-            <button className="toggle">Résultats Trimestriels</button>
         <h1>Tableau des résultats mensuels</h1>
             <div className="scroll-table">
+            {/* <Button tag={TrimestreTable}  to="/TrimestreTable" /> */}
+
+            <button className="">Résultats Trimestriels</button>
+            
                 <table className="monthtable">
+                <thead></thead>
                 <tbody className="tbodymonth">
                 <tr>
                 <th>Item</th>
-                         {listDate}
+                         {listMonth}
                     </tr>
                         {result.map((DataDetail, index) => {
                             return (
                                 <tr>
-                                    <td>{DataDetail.product}</td>
+                                    <th>{DataDetail.product}</th>
                                     {DataDetail.values.map((DataDate, index) => {
                                             return (
                                                 <td>{DataDate.nb}</td>
