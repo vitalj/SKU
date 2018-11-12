@@ -67,7 +67,6 @@ function trimestre(m)
 }
 
 
-
 // Calclul pour Q1 //
 var TrimestreUn = []
 for (var n = 0; n < result.length; n++) {
@@ -101,8 +100,9 @@ let valueTrimestreNeuf = trimestre(22);
 const TrimestreNeuf = valueTrimestreNeuf.map((TrimNeuf) => <td>{TrimNeuf}</td>);
 
 
-
 class TrimestreTable extends Component {
+
+
     render() {
          
         
@@ -128,7 +128,6 @@ class TrimestreTable extends Component {
                             {TrimestreSept[n]}
                             {TrimestreHuit[n]}
                             {TrimestreNeuf[n]}
-
                             </tr>
                         )})}
 

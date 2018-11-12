@@ -1,13 +1,5 @@
 import React, {Component} from 'react';
 import Data from '../data/data.json'
-
-import TrimestreTable from './TrimestreTable'
-import {
-    Route,
-    NavLink,
-    HashRouter
-  } from "react-router-dom";
-
   var myJSON = JSON.stringify(Data);
 var moment = require('moment');
 
@@ -36,6 +28,10 @@ for (const i in parsedJson) {
    let deleteItemInArray = (result[i]['values']).shift(); // J'ai une faute dans mes objets car il n'arrive pas à faire uen date avec les items logique donc je supprime tous les premiers résultats => item
 
 }
+// result contient l'objet demandé avces les dates en format affichable, les dates objet date JS, les quantités et les items//
+
+
+//       console.log(result) 
 
  //// OBJ DATE JS ////
 var DisplayDates = []
@@ -49,17 +45,44 @@ let myMonth = []
 for (var u = 0; u < 25; u++) {
     myMonth[u] = result[1]['values'][u]['DateToDisplay'];
 }
-
 const listMonth = myMonth.map((MonthToDisplay) => <th>{MonthToDisplay}</th>);
 
 
 class MonthTable extends Component {
+    constructor (props) {
+        super(props)
+this.toggleContent = this.toggleContent.bind(this)
+this.state = {
+    monthTable: []
+}
+this.state = {
+    showContent: true
+}
+    }
+
+toggleContent (event){
+    event.preventDefault()
+    const {showContent} = this.state
+    this.setState({
+        showContent: !showContent
+    })
+}
+componentDidMount(){
+    this.setState({
+        MonthTable: Data
+    })
+
+}
     render() {
+        const {monthTable} = this.state
+        const {showContent} = this.state
+
         return (
             <div className="App">
         <h1>Tableau des résultats mensuels</h1>
+        <button onClick={this.toggleContent}>Display</button>
             <div className="scroll-table">            
-                <table className="monthtable">
+          {showContent === true ?     <table className="monthtable">
                 <thead></thead>
                 <tbody className="tbodymonth">
                 <tr>
@@ -79,7 +102,9 @@ class MonthTable extends Component {
                             )
                         })}
                     </tbody>
-                </table> 
+                    </table> :"" }
+
+                    
             </div>   
             </div>
         ) 
