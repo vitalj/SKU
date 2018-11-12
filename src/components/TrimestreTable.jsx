@@ -41,7 +41,6 @@ for (var u = 0; u < 25; u++) {
 console.log(myQuarters)
 
 // Suppression des redondances car j'avais des 3x les trimestres //
-
 function cleanMyQuarters ( ar ) {
     var j = {};
     ar.forEach( function(v) {
@@ -59,7 +58,6 @@ const listQuarters = cleanQuarters.map((QuartersToDisplay) => <th>{QuartersToDis
 
 // fonction permet de renvoyer le calcul pour les trimestres //
 var ValueOfQuarter = []
-
 function trimestre(m)
 {
     for (var n = 0; n < result.length; n++) {
@@ -67,11 +65,40 @@ function trimestre(m)
     }
     return ValueOfQuarter
 }
-console.log(trimestre(1))
 
-const trimestreUN = trimestre(1)
 
-const TrimUn = trimestreUN.map((TrimUn) => <td>{TrimUn}</td>);
+
+// Calclul pour Q1 //
+var TrimestreUn = []
+for (var n = 0; n < result.length; n++) {
+    TrimestreUn[n] = (result[n]['values'][0]['nb']);
+}
+const TrimUn = TrimestreUn.map((n) => <td>{n}</td>);
+
+// Calcul pour les Q suivant
+let valueTrimestreDeux = trimestre(1);
+const TrimesrezDeux = valueTrimestreDeux.map((TrimDeux) => <td>{TrimDeux}</td>);
+
+let valueTrimestreTrois = trimestre(4);
+const TrimestreTrois = valueTrimestreTrois.map((TrimTrois) => <td>{TrimTrois}</td>);
+
+let valueTrimestreQuatre = trimestre(7);
+const TrimestreQuatre = valueTrimestreQuatre.map((TrimQuatre) => <td>{TrimQuatre}</td>);
+
+let valueTrimestreCinq = trimestre(10);
+const TrimestreCinq = valueTrimestreCinq.map((TrimCinq) => <td>{TrimCinq}</td>);
+
+let valueTrimestreSix = trimestre(13);
+const TrimestreSix = valueTrimestreSix.map((TrimSix) => <td>{TrimSix}</td>);
+
+let valueTrimestreSept = trimestre(16);
+const TrimestreSept = valueTrimestreSept.map((TrimSept) => <td>{TrimSept}</td>);
+
+let valueTrimestreHuit = trimestre(19);
+const TrimestreHuit = valueTrimestreHuit.map((TrimHuit) => <td>{TrimHuit}</td>);
+
+let valueTrimestreNeuf = trimestre(22);
+const TrimestreNeuf = valueTrimestreNeuf.map((TrimNeuf) => <td>{TrimNeuf}</td>);
 
 
 
@@ -87,26 +114,23 @@ class TrimestreTable extends Component {
                 <tr>
                 <th>Item</th>
                 {listQuarters}
-
                     </tr>
-                 
-
                    
                     {Data.map((DataDetail, n) => {
                         return (
-                            <tr>
-                                 
-                                <th>
-                                {DataDetail.item} 
-                                                        {TrimUn}  
-                                                         </th> 
+                            <tr><th>{DataDetail.item} </th>                 
+                            {TrimUn[n]}
+                            {TrimesrezDeux[n]}
+                            {TrimestreTrois[n]}
+                            {TrimestreQuatre[n]}
+                            {TrimestreCinq[n]}
+                            {TrimestreSix[n]}
+                            {TrimestreSept[n]}
+                            {TrimestreHuit[n]}
+                            {TrimestreNeuf[n]}
 
-
-                            
                             </tr>
-                        )}
-
-                        )}
+                        )})}
 
                     </tbody>
                 </table>
