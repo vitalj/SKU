@@ -80,7 +80,7 @@ componentDidMount(){
         return (
             <div className="App">
         <h1>Tableau des résultats mensuels</h1>
-        <button onClick={this.toggleContent}>Display</button>
+        <button onClick={this.toggleContent}>Toggle</button>
             <div className="scroll-table">            
           {showContent === true ?     <table className="monthtable">
                 <thead></thead>

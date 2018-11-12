@@ -15,18 +15,19 @@ import {
       
       return (
         <HashRouter>
-            <ul className="header">
             <nav id="navbar">
             <li className="SKU"><NavLink to="/">SKU SCIENCE</NavLink></li>
             <div className="nav-wrapper">
               <li><NavLink to="/Mensuels">Résultats Mensuels</NavLink></li>
               <li><NavLink to="/Trimestriels">Résulats Trimestriels</NavLink></li>
+              </div>
+
+
               <Route exact path="/" component={Home}/>
 <Route exact path="/Mensuels" component={MonthTable}/>
 <Route path="/Trimestriels" component={TrimestreTable}/>
-              </div>
-              </nav>
-            </ul>
+</nav>
+
         </HashRouter>
       );
     }
