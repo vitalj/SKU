@@ -57,64 +57,21 @@ const listQuarters = cleanQuarters.map((QuartersToDisplay) => <th>{QuartersToDis
 
 
 
-// Cette fonction permet de renvoyer le calcul pour les trimestres //
-function trimestre(m) {
+// fonction permet de renvoyer le calcul pour les trimestres //
+var ValueOfQuarter = []
+
+function trimestre(m)
+{
     for (var n = 0; n < result.length; n++) {
-        trimestre[n] = (result[n]['values'][m]['nb']) + (result[n]['values'][m+1]['nb']) + (result[n]['values'][m+2]['nb']);
+        ValueOfQuarter[n] = (result[n]['values'][m]['nb']) + (result[n]['values'][m+1]['nb']) + (result[n]['values'][m+2]['nb']);
     }
-    return trimestre
+    return ValueOfQuarter
 }
-console.log(trimestre(1,2,3))
+console.log(trimestre(1))
 
-var TrimestreUn = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreUn[n] = (result[n]['values'][0]['nb']);
-}
+const trimestreUN = trimestre(1)
 
-
-var TrimestreDeux = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreDeux[n] = (result[n]['values'][1]['nb']) + (result[n]['values'][2]['nb']) + (result[n]['values'][3]['nb']);
-}
-
-var TrimestreTrois = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreTrois[n] = (result[n]['values'][4]['nb']) + (result[n]['values'][5]['nb']) + (result[n]['values'][6]['nb']);
-}
-var TrimestreQuatre = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreQuatre[n] = (result[n]['values'][7]['nb']) + (result[n]['values'][8]['nb']) + (result[n]['values'][9]['nb']);
-}
-var TrimestreCinq = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreCinq[n] = (result[n]['values'][10]['nb']) + (result[n]['values'][11]['nb']) + (result[n]['values'][12]['nb']);
-}
-var TrimestreSix = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreSix[n] = (result[n]['values'][13]['nb']) + (result[n]['values'][14]['nb']) + (result[n]['values'][15]['nb']);
-}
-var TrimestreSept = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreSept[n] = (result[n]['values'][16]['nb']) + (result[n]['values'][17]['nb']) + (result[n]['values'][18]['nb']);8
-}
-var TrimestreHuit = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreHuit[n] = (result[n]['values'][19]['nb']) + (result[n]['values'][20]['nb']) + (result[n]['values'][21]['nb']);
-}
-var TrimestreNeuf = []
-for (var n = 0; n < result.length; n++) {
-    TrimestreNeuf[n] = (result[n]['values'][22]['nb']) + (result[n]['values'][23]['nb']) + (result[n]['values'][24]['nb']);
-}
-
-const TrimUn = TrimestreUn.map((n) => <td>{n}</td>);
-const TrimDeux = TrimestreDeux.map((TrimDeux) => <td>{TrimDeux}</td>);
-const TrimTrois = TrimestreTrois.map((TrimTrois) => <td>{TrimTrois}</td>);
-const TrimQuatre = TrimestreQuatre.map((TrimQuatre) => <td>{TrimQuatre}</td>);
-const TrimCinq = TrimestreCinq.map((TrimCinq) => <td>{TrimCinq}</td>);
-const TrimSix = TrimestreSix.map((TrimSix) => <td>{TrimSix}</td>);
-const TrimSept = TrimestreSept.map((TrimSept) => <td>{TrimSept}</td>);
-const TrimHuit = TrimestreHuit.map((TrimHuit) => <td>{TrimHuit}</td>);
-const TrimNeuf = TrimestreNeuf.map((TrimNeuf) => <td>{TrimNeuf}</td>);
+const TrimUn = trimestreUN.map((TrimUn) => <td>{TrimUn}</td>);
 
 
 
@@ -126,35 +83,32 @@ class TrimestreTable extends Component {
             <div className="App">
                 <h1>Tableau des résultats trimestriels</h1>
                 <table>
-                <thead>
+                <tbody>
                 <tr>
                 <th>Item</th>
                 {listQuarters}
-                    </tr>
-                    </thead>
 
+                    </tr>
+                 
+
+                   
                     {Data.map((DataDetail, n) => {
                         return (
-                            <tbody>
                             <tr>
-                                <td>{DataDetail.item}</td>
-                                {TrimUn[n]}
-                                {TrimDeux[n]}
-                                {TrimTrois[n]}
-                                {TrimQuatre[n]}
-                                {TrimCinq[n]}
-                                {TrimSix[n]}
-                                {TrimSept[n]}
-                                {TrimHuit[n]}
-                                {TrimNeuf[n]}
-                                
+                                 
+                                <th>
+                                {DataDetail.item} 
+                                                        {TrimUn}  
+                                                         </th> 
+
+
+                            
                             </tr>
-                            </tbody>
-                        )
-                    }
-                    )
-                    }
-                    
+                        )}
+
+                        )}
+
+                    </tbody>
                 </table>
             </div>
         );
@@ -162,3 +116,5 @@ class TrimestreTable extends Component {
 }
 
 export default TrimestreTable;
+
+

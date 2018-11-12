@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import Data from '../data/data.json'
-import TrimestreTable from './TrimestreTable.jsx';
-var myJSON = JSON.stringify(Data);
+
+import TrimestreTable from './TrimestreTable'
+import {
+    Route,
+    NavLink,
+    HashRouter
+  } from "react-router-dom";
+
+  var myJSON = JSON.stringify(Data);
 var moment = require('moment');
 
 const parsedJson = JSON.parse(myJSON);
@@ -51,11 +58,7 @@ class MonthTable extends Component {
         return (
             <div className="App">
         <h1>Tableau des résultats mensuels</h1>
-            <div className="scroll-table">
-            {/* <Button tag={TrimestreTable}  to="/TrimestreTable" /> */}
-
-            <button className="">Résultats Trimestriels</button>
-            
+            <div className="scroll-table">            
                 <table className="monthtable">
                 <thead></thead>
                 <tbody className="tbodymonth">
